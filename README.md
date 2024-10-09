@@ -137,3 +137,23 @@ Incluya el archivo JavaScript de Flowbite dentro del archivo `_base.html` justo 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 ```
+
+
+## Integración con **Prettier**
+
+Desde la carpeta `frontend/`:
+```bash
+npm install -D prettier prettier-plugin-tailwindcss
+```
+
+Crea el archivo `prettierrc`:
+```bash
+node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+```
+
+Configura el archivo `prettierrc`:
+```
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
