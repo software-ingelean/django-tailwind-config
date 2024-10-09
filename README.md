@@ -101,7 +101,7 @@ npx tailwindcss -i ../static/src/input.css -o ../static/src/output.css --watch
 
 Importe en su template el archivo `output.css` que genera tailwind:
 
-```html
+```jinja2
 {% compress css %}
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
 {% endcompress %}
@@ -156,4 +156,37 @@ Configura el archivo `prettierrc`:
 {
   "plugins": ["prettier-plugin-tailwindcss"]
 }
+```
+
+## Integración modo claro / oscuro
+
+Agrega una carpeta `js/utils` a tu archivo `static` y agrega `theme_manager.js` y `toggle_theme.js`:
+
+```
+static
+└── js
+    └── utils
+        └── theme_manager.js
+        └── toggle_theme.js
+```
+
+Para usar el botón de cambiar de tema crea en la carpeta `templates/` una carpeta `components/` y agrega el componente `theme_toggle_button.html`:
+
+```
+templates
+└── components
+    └── theme_toggle_button.html
+```
+
+En tu archivo `base.html` importa los scripts para el manejo de los temas:
+
+```jinja2
+<script src="{% static 'js/utils/theme_manager.js' %}"></script>
+<script src="{% static 'ingelean_plus/js/utils/toggle_theme.js' %}"></script>
+```
+
+Para usar el botón de cambio de tema en cualquier template se hace así:
+
+```jinja2
+<div>{% include 'components/buttons/theme_toggle_button.html' %}</div>
 ```
